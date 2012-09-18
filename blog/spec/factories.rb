@@ -3,6 +3,11 @@ FactoryGirl.define do
     sequence(:username) { |n| "foo-#{n}" }
     password "foobar"
     email { "#{username}@example.com" }
+    admin false
+
+    factory :admin do
+      admin true
+    end
   end
 
   factory :article do

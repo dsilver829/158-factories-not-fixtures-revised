@@ -17,4 +17,9 @@ describe User do
     user.can_manage_article?(article).should be_true
     user.can_manage_article?(Article.new).should be_false
   end
+
+  it "can manage any articles as admin" do
+    build(:admin).can_manage_article?(Article.new).should be_true
+    build(:user).can_manage_article?(Article.new).should be_false
+  end
 end
