@@ -10,4 +10,11 @@ describe User do
     create(:user, username: "batman", password: "secret")
     User.authenticate("batman", "incorrect").should be_nil
   end
+
+  it "can manage articles he owns" do
+    article = build(:article)
+    user = article.user
+    user.can_manage_article?(article).should be_true
+    user.can_manage_article?(Article.new).should be_false
+  end
 end
